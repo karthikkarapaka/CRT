@@ -1,0 +1,14 @@
+--@table: ORDER_ITEMS
+-- Remove an item from an order
+DELETE FROM ORDER_ITEMS
+WHERE ORDER_ID = 1001 AND PRODUCT_ID = 102;
+
+--@table: PRODUCTS
+-- Remove a product that is no longer sold
+DELETE FROM PRODUCTS
+WHERE PRODUCT_ID = 301;
+
+--@table: CUSTOMERS
+-- Delete a customer. This will fail if customer has orders unless "ON DELETE CASCADE" is set.
+DELETE FROM CUSTOMERS
+WHERE CUSTOMER_ID = 3;

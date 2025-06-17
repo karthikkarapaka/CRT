@@ -1,0 +1,33 @@
+--@table: CUSTOMERS
+-- Get all customers
+SELECT * FROM CUSTOMERS ORDER BY LAST_NAME;
+
+--@table: PRODUCTS
+-- Get all products with a price greater than $50
+SELECT PRODUCT_ID, PRODUCT_NAME, PRICE FROM PRODUCTS WHERE PRICE > 50;
+
+--@table: PRODUCTS_IN_CATEGORY
+-- Get all products in the 'Electronics' category (ID 10)
+SELECT p.PRODUCT_NAME, p.PRICE, c.CATEGORY_NAME
+FROM PRODUCTS p
+JOIN CATEGORIES c ON p.CATEGORY_ID = c.CATEGORY_ID
+WHERE p.CATEGORY_ID = 10;
+
+--@table: CUSTOMER_ORDERS
+-- Get a list of all orders with the customer's name
+SELECT o.ORDER_ID, o.ORDER_DATE, c.FIRST_NAME, c.LAST_NAME
+FROM ORDERS o
+JOIN CUSTOMERS c ON o.CUSTOMER_ID = c.CUSTOMER_ID;
+
+--@table: ORDER_DETAILS
+-- Get a detailed view of a specific order (e.g., Order 1001)
+SELECT
+    o.ORDER_ID,
+    p.PRODUCT_NAME,
+    oi.QUANTITY,
+    oi.PRICE_PER_ITEM,
+    (oi.QUANTITY * oi.PRICE_PER_ITEM) AS TOTAL_PRICE
+FROM ORDER_ITEMS oi
+JOIN PRODUCTS p ON oi.PRODUCT_ID = p.PRODUCT_ID
+JOIN ORDERS o ON oi.ORDER_ID = o.ORDER_ID
+WHERE o.ORDER_ID = 1001;

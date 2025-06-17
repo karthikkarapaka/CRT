@@ -1,0 +1,17 @@
+--@table: PRODUCTS
+-- Update the price of a product
+UPDATE PRODUCTS
+SET PRICE = 1150.00
+WHERE PRODUCT_ID = 101;
+
+--@table: CUSTOMERS
+-- Update a customer's email address
+UPDATE CUSTOMERS
+SET EMAIL = 'jane.d.new@email.com'
+WHERE CUSTOMER_ID = 2;
+
+--@table: STOCK_ADJUSTMENT
+-- Increase the stock of an item
+UPDATE PRODUCTS
+SET STOCK_QUANTITY = STOCK_QUANTITY + 50
+WHERE PRODUCT_ID = 301;
